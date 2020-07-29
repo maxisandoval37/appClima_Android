@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">clima</string>
+    <string name="texto_ubicacion">Buenos Aires</string>
+    <string name="texto_temperatura">0º</string>
+    <string name="texto_estado">Nublado</string>
+    <string name="texto_bievenida">¡BIENVENIDO!</string>
+</resources>
