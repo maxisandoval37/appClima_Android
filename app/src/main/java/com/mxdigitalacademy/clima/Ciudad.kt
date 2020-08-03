@@ -1,27 +1,18 @@
 package com.mxdigitalacademy.clima
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.View
-import android.widget.Button
+class Ciudad (nombre:String, temp:String, descripcion:String) {
 
-class Ciudad : AppCompatActivity() {
+     var _nombre:String = ""
+    private var _temp:String = ""
+    private var _descripcion:String = ""
 
-    fun accionBotonContinuar(){
-        val boton = findViewById<Button>(R.id.btContinuar)
-
-        boton.setOnClickListener(View.OnClickListener {
-            val IntentMainClass = Intent(this,MainActivity::class.java) //a donde, nos redirigimos
-            startActivity(IntentMainClass)
-
-        })
+    init {
+        this._nombre=nombre
+        this._temp=temp
+        this._descripcion=descripcion
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cuidad)
-
-        accionBotonContinuar()
+    fun mostrarDatos(){
+        println("Nombre: $_nombre | Temperatura: $_temp | Estado: $_descripcion")
     }
 }
