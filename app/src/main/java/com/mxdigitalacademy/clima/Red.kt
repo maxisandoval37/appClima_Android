@@ -24,19 +24,11 @@ class Red {
             return (networkInfo != null) && networkInfo.isConnected
         }
 
-        fun solicitudHTTPVolley(
-            contextActivity: AppCompatActivity,
-            url: String,
-            ubicacion: String
-        ) {
+        fun solicitudHTTPVolley(contextActivity: AppCompatActivity, url: String, ubicacion: String) {
             val colaDeSolicitudes = Volley.newRequestQueue(contextActivity)
             val direccion = url.replace("LUGAR", ubicacion)
 
-            val solicitud =
-                StringRequest(Request.Method.GET, direccion, Response.Listener<String> { response ->
-
-                    // parsearAJSON(response)
-                    //retornar Cuidad
+            val solicitud = StringRequest(Request.Method.GET, direccion, Response.Listener<String> { response ->
 
                     mapearJSON(response)
 
@@ -53,19 +45,15 @@ class Red {
 
             val nombre = jsonMapeado.getString("name")
             val temperatura = jsonMapeado.getJSONObject("main").getString("temp")
-            val descripcion =
-                jsonMapeado.getJSONArray("weather").getJSONObject(0).getString("description")
+            val descripcion = jsonMapeado.getJSONArray("weather").getJSONObject(0).getString("description")
 
             this.ciudadRet = Ciudad(nombre, temperatura, descripcion)
-
         }
 
         fun obtenerCiudad(): Ciudad? {
             return ciudadRet
         }
 
-
     }
-
 
 }

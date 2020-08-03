@@ -2,7 +2,7 @@ package com.mxdigitalacademy.clima
 
 class Ciudad (nombre:String, temp:String, descripcion:String) {
 
-     var _nombre:String = ""
+    private var _nombre:String = ""
     private var _temp:String = ""
     private var _descripcion:String = ""
 
