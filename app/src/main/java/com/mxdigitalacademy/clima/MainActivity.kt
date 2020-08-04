@@ -35,9 +35,11 @@ class MainActivity : AppCompatActivity() {
         val temperatura = jsonMapeado.getJSONObject("main").getString("temp")
         val descripcion = jsonMapeado.getJSONArray("weather").getJSONObject(0).getString("description")
 
+        val descripIcon = jsonMapeado.getJSONArray("weather").getJSONObject(0).getString("icon")
+
         this.objRet = Ciudad(nombre, temperatura, descripcion)
         setearInfoElementosVisuales(this.objRet?.getNombre(),this.objRet?.getTemp(),this.objRet?.getDescripcion())
-        setearImagenDescripcion(this.objRet?.getDescripcion().toString())
+        setearImagenDescripcion(descripIcon)
     }
 
     private fun setearInfoElementosVisuales(textoNombre: String?, textoTemp: String?, textoDescrip: String?){
@@ -46,14 +48,15 @@ class MainActivity : AppCompatActivity() {
         tvEstadoClima.text = textoDescrip
     }
 
-    private fun setearImagenDescripcion(descripcion:String) {
+    private fun setearImagenDescripcion(descripcion:String) {//no usamos las de la api, por cuestiones de diseño
         when (descripcion) {
-            "cielo limpio" -> imgDescripcion.setImageResource(R.drawable.soleado)
-            "nubes" -> imgDescripcion.setImageResource(R.drawable.nublado)
-            "pocas nubes" -> imgDescripcion.setImageResource(R.drawable.solmoderado)
-            "tormenta, lluvia, aguacero" -> imgDescripcion.setImageResource(R.drawable.lluvias)
+            "01d","01n" -> imgDescripcion.setImageResource(R.drawable.soleado)
+            "03d","04d","50d","03n","04n","50n" -> imgDescripcion.setImageResource(R.drawable.nublado)
+            "02d","02n" -> imgDescripcion.setImageResource(R.drawable.solmoderado)
+            "09d","10d","11d","13d","09n","10n","11n","13n" -> imgDescripcion.setImageResource(R.drawable.lluvias)
         }
     }
+    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
