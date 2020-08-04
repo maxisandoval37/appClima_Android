@@ -12,19 +12,15 @@ class Ciudad (nombre:String, temp:String, descripcion:String) {
         this._descripcion=descripcion
     }
 
-    fun mostrarDatos(){
-        println("Nombre: $_nombre | Temperatura: $_temp | Estado: $_descripcion")
-    }
-
-    fun getterNombre():String{
+    fun getNombre():String{
         return this._nombre
     }
 
-    fun getterTemp():String{
+    fun getTemp():String{
         return this._temp
     }
 
-    fun getterDescripcion():String{
+    fun getDescripcion():String{
         return this._descripcion
     }
 

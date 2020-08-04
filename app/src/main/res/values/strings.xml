@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">clima</string>
-    <string name="texto_ubicacion">Buenos Aires</string>
+    <string name="texto_ubicacion">Desconocido</string>
     <string name="texto_temperatura">0º</string>
-    <string name="texto_estado">Nublado</string>
+    <string name="texto_estado">Desconocido</string>
     <string name="texto_bievenida">¡BIENVENIDO!</string>
+    <string name="ubicacionDefecto">Buenos Aires</string>
+    <string name="continuar">Continuar</string>
 </resources>
