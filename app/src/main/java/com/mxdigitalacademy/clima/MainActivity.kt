@@ -37,12 +37,22 @@ class MainActivity : AppCompatActivity() {
 
         this.objRet = Ciudad(nombre, temperatura, descripcion)
         setearInfoElementosVisuales(this.objRet?.getNombre(),this.objRet?.getTemp(),this.objRet?.getDescripcion())
+        setearImagenDescripcion(this.objRet?.getDescripcion().toString())
     }
 
-    fun setearInfoElementosVisuales(textoNombre: String?, textoTemp: String?, textoDescrip: String?){
+    private fun setearInfoElementosVisuales(textoNombre: String?, textoTemp: String?, textoDescrip: String?){
         tvUbicacion.text = textoNombre
         tvTemperatura.text = textoTemp+"º"
         tvEstadoClima.text = textoDescrip
+    }
+
+    private fun setearImagenDescripcion(descripcion:String) {
+        when (descripcion) {
+            "cielo limpio" -> imgDescripcion.setImageResource(R.drawable.soleado)
+            "nubes" -> imgDescripcion.setImageResource(R.drawable.nublado)
+            "pocas nubes" -> imgDescripcion.setImageResource(R.drawable.solmoderado)
+            "tormenta, lluvia, aguacero" -> imgDescripcion.setImageResource(R.drawable.lluvias)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
