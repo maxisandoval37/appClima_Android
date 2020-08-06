@@ -14,15 +14,14 @@ class MainActivity : AppCompatActivity() {
 
     private var objRet: Ciudad? = null
 
-    private fun solicitudHTTPVolley(contextActivity: AppCompatActivity, url: String, ubicacion: String) {
+    private fun solicitudHTTPVolley(contextActivity: AppCompatActivity, url: String) {
         val colaDeSolicitudes = Volley.newRequestQueue(contextActivity)
-        val direccion = url.replace("LUGAR", ubicacion)
 
-        val solicitud = StringRequest(Request.Method.GET, direccion, Response.Listener<String> { response ->
+        val solicitud = StringRequest(Request.Method.GET, url, Response.Listener<String> { response ->
             datosJSON(response)
 
         }, Response.ErrorListener { error ->
-            Toast.makeText(contextActivity, "$error (Posible ubicación Inexistente)", Toast.LENGTH_SHORT).show()
+            Toast.makeText(contextActivity, "Posible ubicación Inexistente", Toast.LENGTH_SHORT).show()
         })
 
         colaDeSolicitudes.add(solicitud)
@@ -63,14 +62,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val ubicacion = intent.getStringExtra("com.mxdigitalacademy.clima.ciudad.LUGAR").toString()
+        val urlApi = "https://api.openweathermap.org/data/2.5/weather?q=$ubicacion&appid=b88ca6348bffab22427dff7f05986265&lang=es&units=metric"
+        println(urlApi)
 
-        if (Red.verficarConexionInternet(this)){
+        if (Red.verficarConexionInternet(this))
+            solicitudHTTPVolley(this, urlApi)
 
-            solicitudHTTPVolley(
-                this,
-                "https://api.openweathermap.org/data/2.5/weather?q=LUGAR,Arg&appid=b88ca6348bffab22427dff7f05986265&lang=es&units=metric",
-                ubicacion)
-        }
         else
             Toast.makeText(this,"No hay conexion a Internet",Toast.LENGTH_SHORT).show()
     }
