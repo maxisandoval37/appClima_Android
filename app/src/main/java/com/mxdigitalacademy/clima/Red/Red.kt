@@ -5,7 +5,6 @@ import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 
 class Red {
-
     companion object {
 
         fun verficarConexionInternet(contextActivity: AppCompatActivity): Boolean {

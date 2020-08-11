@@ -44,13 +44,9 @@ class MainActivity : AppCompatActivity() {
     private fun setearImagenDescripcion(descripcion:String?) {//no usamos las de la api, por cuestiones de diseño
         when (descripcion) {
             "01d","01n" -> imgDescripcion.setImageResource(R.drawable.soleado)
-            "03d","04d","50d","03n","04n","50n" -> imgDescripcion.setImageResource(
-                R.drawable.nublado
-            )
+            "03d","04d","50d","03n","04n","50n" -> imgDescripcion.setImageResource(R.drawable.nublado)
             "02d","02n" -> imgDescripcion.setImageResource(R.drawable.solmoderado)
-            "09d","10d","11d","13d","09n","10n","11n","13n" -> imgDescripcion.setImageResource(
-                R.drawable.lluvias
-            )
+            "09d","10d","11d","13d","09n","10n","11n","13n" -> imgDescripcion.setImageResource(R.drawable.lluvias)
         }
     }
     
@@ -61,11 +57,9 @@ class MainActivity : AppCompatActivity() {
 
         val ubicacion = intent.getStringExtra("com.mxdigitalacademy.clima.ciudad.LUGAR").toString()
         val urlApi = "https://api.openweathermap.org/data/2.5/weather?q=$ubicacion&appid=b88ca6348bffab22427dff7f05986265&lang=es&units=metric"
-        println(urlApi)
 
         if (Red.verficarConexionInternet(this))
             solicitudHTTPVolley(this, urlApi)
-
         else
             Toast.makeText(this,"No hay conexion a Internet",Toast.LENGTH_SHORT).show()
     }
