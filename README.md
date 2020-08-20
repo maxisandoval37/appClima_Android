@@ -4,7 +4,7 @@ Para su desarrollo se utilizó tecnologías como Volley y JSON.
 
 
 
-![inicio](https://ibb.co/82sQrzv)
+![inicio](https://i.ibb.co/bLmGsHw/Screenshot-20200820-145508-clima.jpg)
 
 ![pantalla principal](https://k62.kn3.net/taringa/7/A/6/A/F/4/maxisandoval37/F64.jpg)
 
