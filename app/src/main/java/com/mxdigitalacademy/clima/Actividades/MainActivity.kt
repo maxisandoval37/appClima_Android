@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity() {
                 "com.android.volley.ClientError" -> Toast.makeText(contextActivity, "Posible ubicación Inexistente", Toast.LENGTH_SHORT).show()
             }
 
-            println(error.toString())
-
         })
         colaDeSolicitudes.add(solicitud)
     }
