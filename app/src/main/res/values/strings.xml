@@ -6,4 +6,5 @@
     <string name="texto_bievenida">¡BIENVENIDO!</string>
     <string name="ubicacionDefecto">Buenos Aires</string>
     <string name="continuar">Continuar</string>
+    <string name="todo">TODO</string>
 </resources>

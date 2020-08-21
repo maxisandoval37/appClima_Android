@@ -22,7 +22,12 @@ class MainActivity : AppCompatActivity() {
             cargaDatos(response)
 
         }, Response.ErrorListener { error ->
-            Toast.makeText(contextActivity, "Posible ubicación Inexistente", Toast.LENGTH_SHORT).show()
+            when (error.toString()) {
+                "com.android.volley.ClientError" -> Toast.makeText(contextActivity, "Posible ubicación Inexistente", Toast.LENGTH_SHORT).show()
+            }
+
+            println(error.toString())
+
         })
         colaDeSolicitudes.add(solicitud)
     }
@@ -49,7 +54,15 @@ class MainActivity : AppCompatActivity() {
             "09d","10d","11d","13d","09n","10n","11n","13n" -> imgDescripcion.setImageResource(R.drawable.lluvias)
         }
     }
-    
+
+    private fun refrescarDatosAPI(urlApi:String){
+        swipeRefrescar.setOnRefreshListener {
+            solicitudHTTPVolley(this, urlApi)
+            Toast.makeText(this,"Actualizado",Toast.LENGTH_SHORT).show()
+            swipeRefrescar.isRefreshing = false
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,8 +73,12 @@ class MainActivity : AppCompatActivity() {
 
         if (Red.verficarConexionInternet(this))
             solicitudHTTPVolley(this, urlApi)
+
         else
             Toast.makeText(this,"No hay conexion a Internet",Toast.LENGTH_SHORT).show()
+
+        refrescarDatosAPI(urlApi)
+
     }
 
 }
