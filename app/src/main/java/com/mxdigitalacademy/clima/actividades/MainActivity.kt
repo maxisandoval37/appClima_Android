@@ -1,19 +1,23 @@
-package com.mxdigitalacademy.clima.Actividades
+package com.mxdigitalacademy.clima.actividades
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.mxdigitalacademy.clima.R
-import com.mxdigitalacademy.clima.Red.Red
+import com.mxdigitalacademy.clima.red.Red
 import com.mxdigitalacademy.clima.objCiudad.Ciudad
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    private var toolbar: Toolbar? = null
 
     private fun solicitudHTTPVolley(contextActivity: AppCompatActivity, url: String) {
         val colaDeSolicitudes = Volley.newRequestQueue(contextActivity)
@@ -62,9 +66,36 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    //          ------   TOOLBAR   ------
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menutoolbar,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.itemCreditos -> Toast.makeText(this,R.string.creditos, Toast.LENGTH_SHORT).show()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun hablitraBotonVolverToolBar(){
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun iniciarToolbar(){
+        toolbar = findViewById(R.id.toolbar)
+        toolbar?.setTitle(R.string.app_name)
+        setSupportActionBar(toolbar)
+        hablitraBotonVolverToolBar()
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        iniciarToolbar()
 
         val ubicacion = intent.getStringExtra("com.mxdigitalacademy.clima.ciudad.LUGAR").toString()
         val urlApi = "https://api.openweathermap.org/data/2.5/weather?q=$ubicacion&appid=b88ca6348bffab22427dff7f05986265&lang=es&units=metric"
@@ -76,7 +107,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this,"No hay conexion a Internet",Toast.LENGTH_SHORT).show()
 
         refrescarDatosAPI(urlApi)
-
     }
 
 }

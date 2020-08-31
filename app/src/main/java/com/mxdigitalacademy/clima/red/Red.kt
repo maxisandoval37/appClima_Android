@@ -1,4 +1,4 @@
-package com.mxdigitalacademy.clima.Red
+package com.mxdigitalacademy.clima.red
 
 import android.content.Context
 import android.net.ConnectivityManager

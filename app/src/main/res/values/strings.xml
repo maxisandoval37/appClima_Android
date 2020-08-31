@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">clima</string>
+    <string name="app_name">Clima ☀</string>
     <string name="texto_ubicacion">Desconocido</string>
     <string name="texto_temperatura">0º</string>
     <string name="texto_estado">Desconocido</string>
@@ -7,4 +7,5 @@
     <string name="ubicacionDefecto">Buenos Aires</string>
     <string name="continuar">Continuar</string>
     <string name="todo">TODO</string>
+    <string name="creditos">Gracias!! ❤ Créditos: maxisandoval37</string>
 </resources>
