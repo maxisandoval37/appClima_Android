@@ -4,12 +4,16 @@ Para su desarrollo se utilizó tecnologías como Volley y GSON.
 
 
 
-![inicio](https://i.ibb.co/bLmGsHw/Screenshot-20200820-145508-clima.jpg)
+![inicio](https://k62.kn3.net/taringa/5/9/3/B/9/3/maxisandoval37/C8F.jpg)
 
-![pantalla principal](https://k62.kn3.net/taringa/7/A/6/A/F/4/maxisandoval37/F64.jpg)
+![pantalla principal](https://k62.kn3.net/taringa/E/C/0/6/3/1/maxisandoval37/161.jpg)
 
-![pantalla principal](https://k62.kn3.net/taringa/6/6/8/1/9/4/maxisandoval37/393.jpg)
+![pantalla principal](https://k62.kn3.net/taringa/7/A/7/1/B/D/maxisandoval37/666.jpg)
 
-![pantalla principal](https://k62.kn3.net/taringa/D/D/C/3/5/E/maxisandoval37/1AA.jpg)
+![pantalla principal](https://k62.kn3.net/taringa/E/5/7/3/9/5/maxisandoval37/D08.jpg)
 
-![pantalla principal](https://k62.kn3.net/taringa/0/0/B/6/6/C/maxisandoval37/CE5.jpg)
+![pantalla principal](https://k62.kn3.net/taringa/7/F/B/3/D/8/maxisandoval37/216.jpg)
+
+![pantalla principal](https://k62.kn3.net/taringa/F/3/8/D/1/1/maxisandoval37/58D.jpg)
+
+![pantalla principal](https://k62.kn3.net/taringa/C/F/6/1/4/B/maxisandoval37/939.jpg)
