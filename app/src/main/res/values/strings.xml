@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Clima ☀</string>
+    <string name="app_name">Clima</string>
     <string name="texto_ubicacion">Desconocido</string>
     <string name="texto_temperatura">0º</string>
     <string name="texto_estado">Desconocido</string>

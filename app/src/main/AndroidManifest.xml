@@ -22,7 +22,9 @@
         </activity>
 
         <activity android:name=".actividades.MainActivity"
-            android:parentActivityName=".actividades.Presentacion">
+            android:parentActivityName=".actividades.Presentacion"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
 
     </application>
