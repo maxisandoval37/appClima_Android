@@ -3,9 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/barraBusqueda"
+        android:icon="@drawable/vector_search"
+        android:title="@string/buscar"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+
+    <item
         android:id="@+id/itemCreditos"
         android:icon="@drawable/vector_creditos"
         android:title="@string/creditos"
         app:showAsAction="ifRoom" />
+
 
 </menu>

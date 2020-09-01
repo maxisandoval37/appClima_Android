@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.android.volley.Request
@@ -18,6 +19,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private var toolbar: Toolbar? = null
+    private var ubicacion:String = ""
+    private var urlApi = ""
 
     private fun solicitudHTTPVolley(contextActivity: AppCompatActivity, url: String) {
         val colaDeSolicitudes = Volley.newRequestQueue(contextActivity)
@@ -28,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         }, Response.ErrorListener { error ->
             when (error.toString()) {
                 "com.android.volley.ClientError" -> Toast.makeText(contextActivity, "Posible ubicación Inexistente", Toast.LENGTH_SHORT).show()
+                "com.android.volley.NoConnectionError" -> Toast.makeText(contextActivity, "Sin acceso a la Red", Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -65,10 +69,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun asignarUbicacionLinkApi(ubi:String){
+        this.ubicacion=ubi
+        this.urlApi="https://api.openweathermap.org/data/2.5/weather?q=$ubicacion&appid=b88ca6348bffab22427dff7f05986265&lang=es&units=metric"
+    }
 
     //          ------   TOOLBAR   ------
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menutoolbar,menu)
+        habilitarSearchView(menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -84,6 +93,23 @@ class MainActivity : AppCompatActivity() {
         actionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    private fun habilitarSearchView(menu: Menu?){
+        val itemBusqueda = menu?.findItem(R.id.barraBusqueda)
+        val vistaBusqueda = itemBusqueda?.actionView as SearchView
+        vistaBusqueda.queryHint = "Ingresa la ubicación"
+
+        vistaBusqueda.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                asignarUbicacionLinkApi(p0.toString())
+                solicitudHTTPVolley(this@MainActivity,urlApi)
+                return true
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean
+                { return false }
+        })
+    }
+
     private fun iniciarToolbar(){
         toolbar = findViewById(R.id.toolbar)
         toolbar?.setTitle(R.string.app_name)
@@ -95,13 +121,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        iniciarToolbar()
 
-        val ubicacion = intent.getStringExtra("com.mxdigitalacademy.clima.ciudad.LUGAR").toString()
-        val urlApi = "https://api.openweathermap.org/data/2.5/weather?q=$ubicacion&appid=b88ca6348bffab22427dff7f05986265&lang=es&units=metric"
+        iniciarToolbar()
+        asignarUbicacionLinkApi(intent.getStringExtra("com.mxdigitalacademy.clima.ciudad.LUGAR").toString())
 
         if (Red.verficarConexionInternet(this))
-            solicitudHTTPVolley(this, urlApi)
+            solicitudHTTPVolley(this, this.urlApi)
 
         else
             Toast.makeText(this,"No hay conexion a Internet",Toast.LENGTH_SHORT).show()
