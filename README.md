@@ -1,5 +1,5 @@
 # appClima
-Aplicación del clima para Android (en Kotlin). Nos muestra resultados reales (de cualquier parte del mundo) proporcionados por una API.
+Aplicación del clima para Android (en Kotlin). Nos muestra resultados meteorológicos reales (de cualquier parte del mundo) proporcionados por una API.
 Para su desarrollo se utilizó tecnologías como Volley y GSON.
 
 
