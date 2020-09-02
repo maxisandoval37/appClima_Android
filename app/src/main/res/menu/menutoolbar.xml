@@ -16,5 +16,11 @@
         android:title="@string/creditos"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/itemCompartir"
+        android:title="@string/compartir"
+        app:showAsAction="ifRoom"
+        app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider" />
+
 
 </menu>

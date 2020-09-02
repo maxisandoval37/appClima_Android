@@ -1,12 +1,15 @@
 package com.mxdigitalacademy.clima.actividades
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.widget.ShareActionProvider
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.MenuItemCompat
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -19,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private var toolbar: Toolbar? = null
-    private var ubicacion:String = ""
+    private var ubicacionActual:String = ""
     private var urlApi = ""
 
     private fun solicitudHTTPVolley(contextActivity: AppCompatActivity, url: String) {
@@ -70,14 +73,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun asignarUbicacionLinkApi(ubi:String){
-        this.ubicacion=ubi
-        this.urlApi="https://api.openweathermap.org/data/2.5/weather?q=$ubicacion&appid=b88ca6348bffab22427dff7f05986265&lang=es&units=metric"
+        this.ubicacionActual=ubi
+        this.urlApi="https://api.openweathermap.org/data/2.5/weather?q=$ubicacionActual&appid=b88ca6348bffab22427dff7f05986265&lang=es&units=metric"
     }
 
     //          ------   TOOLBAR   ------
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menutoolbar,menu)
         habilitarSearchView(menu)
+        habilitarCompartir(menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -110,6 +114,21 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun habilitarCompartir(menu: Menu?){
+        val itemCompartir = menu?.findItem(R.id.itemCompartir)
+        val shareActionProvider = MenuItemCompat.getActionProvider(itemCompartir) as ShareActionProvider
+
+        compartirIntentDatosClimaActual(shareActionProvider)
+    }
+
+    private fun compartirIntentDatosClimaActual(shareActionProvider: ShareActionProvider){
+        val intent = Intent(Intent.ACTION_SEND)
+        val textoCompartir="Ey! Descargate esta app para saber el clima de $ubicacionActual y muchos más lugares! \uD83D\uDE06 \n\n https://github.com/maxisandoval37/appClima"
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_TEXT,textoCompartir)
+        shareActionProvider.setShareIntent(intent)
+    }
+
     private fun iniciarToolbar(){
         toolbar = findViewById(R.id.toolbar)
         toolbar?.setTitle(R.string.app_name)
@@ -127,7 +146,6 @@ class MainActivity : AppCompatActivity() {
 
         if (Red.verficarConexionInternet(this))
             solicitudHTTPVolley(this, this.urlApi)
-
         else
             Toast.makeText(this,"No hay conexion a Internet",Toast.LENGTH_SHORT).show()
 
