@@ -6,8 +6,6 @@ Para su desarrollo se utilizó tecnologías como Volley y GSON.
 
 ![inicio](https://k62.kn3.net/taringa/5/9/3/B/9/3/maxisandoval37/C8F.jpg)
 
-![pantalla principal](https://k62.kn3.net/taringa/E/C/0/6/3/1/maxisandoval37/161.jpg)
-
 ![pantalla principal](https://k62.kn3.net/taringa/7/5/3/2/7/4/maxisandoval37/F97.jpg)
 
 ![pantalla principal](https://k62.kn3.net/taringa/F/1/8/E/8/0/maxisandoval37/8A3.jpg)
