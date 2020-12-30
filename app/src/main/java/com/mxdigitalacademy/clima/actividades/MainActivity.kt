@@ -87,6 +87,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
+
+            android.R.id.home ->  {
+                finish()
+                return true
+            }
+
             R.id.itemCreditos -> Toast.makeText(this,R.string.creditos, Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
