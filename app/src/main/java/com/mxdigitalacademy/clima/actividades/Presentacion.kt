@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.mxdigitalacademy.clima.R
 
 class Presentacion : AppCompatActivity() {
@@ -15,13 +16,16 @@ class Presentacion : AppCompatActivity() {
         val direccion = "com.mxdigitalacademy.clima.ciudad.LUGAR"
 
         boton.setOnClickListener(View.OnClickListener {
-            val IntentMainClass = Intent(this,
-                MainActivity::class.java) //a donde, nos redirigimos
+            val intentMainClass = Intent(this, MainActivity::class.java)
             val etUbicacionTexto = findViewById<EditText>(R.id.etUbicacion).text.toString()
 
-            IntentMainClass.putExtra(direccion,etUbicacionTexto)
+            if (etUbicacionTexto.isEmpty())
+                Toast.makeText(this,"Ingrese una ubicación para continuar",Toast.LENGTH_SHORT).show()
+            else{
+                intentMainClass.putExtra(direccion,etUbicacionTexto)
+                startActivity(intentMainClass)
+            }
 
-            startActivity(IntentMainClass)
         })
     }
 
