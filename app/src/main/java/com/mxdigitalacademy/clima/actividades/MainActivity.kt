@@ -142,7 +142,6 @@ class MainActivity : AppCompatActivity() {
         hablitraBotonVolverToolBar()
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
